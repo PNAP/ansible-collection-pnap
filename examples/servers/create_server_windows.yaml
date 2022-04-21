@@ -12,7 +12,7 @@
   - phoenixnap.bmc.server:
       client_id: "{{clientId}}"
       client_secret: "{{clientSecret}}"
-      hostnames: [my-server-1]
+      hostnames: my-server-1
       location: PHX
       os: windows/srv2019std
       type: s0.d1.medium

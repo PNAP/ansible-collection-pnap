@@ -47,7 +47,7 @@ def set_token_headers(module):
     REQUEST.headers.update({'X-Powered-By': 'BMC-Ansible'})
 
 
-def requests_wrapper(endpoint, method='GET', params=None, data=None, module=None, reauth_attempts=3):
+def requests_wrapper(endpoint, method='GET', params=None, data=None, module=None, reauth_attempts=3, retries=3):
     try:
         response = REQUEST.request(method, endpoint, data=data, params=params)
         if response.status_code == 401:
@@ -60,7 +60,9 @@ def requests_wrapper(endpoint, method='GET', params=None, data=None, module=None
             validation_errors = response.json().get('validationErrors')
             raise Exception('status code %s | %s | Validation errors: %s' % (response.status_code, error_message, validation_errors))
     except requests.exceptions.RequestException as e:
-        raise_from(Exception("Communications error: %s" % str(e)), e)
+        if retries == 0:
+            raise_from(Exception("Communications error: %s" % str(e)), e)
+        return requests_wrapper(endpoint, method, params, data, module, retries=retries - 1)
 
     return response
 
