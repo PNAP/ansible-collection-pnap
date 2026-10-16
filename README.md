@@ -44,7 +44,7 @@ Follow these helpful tutorials to learn how to install Ansible on Ubuntu and Win
 - [How to Install and Configure Ansible on Ubuntu 20.04](https://phoenixnap.com/kb/install-ansible-ubuntu-20-04)
 - [How to Install and Configure Ansible on Windows](https://phoenixnap.com/kb/install-ansible-on-windows)
 
-## Installing the Bare Metal Cloud Ansible module
+## Installing the Bare Metal Cloud Ansible collection
 
 Before using this collection, you need to install it with the Ansible Galaxy command-line tool:
 
@@ -57,7 +57,7 @@ collections:
   - name: phoenixnap.bmc
 ```
 
-Red Hat Ansible Automation Platform customers should use an Execution Environment (EE) that bundles this collection and its dependencies instead of pip-installing them directly. See the [Red Hat Ansible Automation Platform documentation](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/) for building and using EEs, and install the collection from [Red Hat Automation Hub](https://console.redhat.com/ansible/automation-hub/)
+**Red Hat Ansible Automation Platform customers** should use an Execution Environment (EE) that includes this collection and its dependencies. Install the collection from [Red Hat Automation Hub](https://console.redhat.com/ansible/automation-hub/). For instructions on building and using Execution Environments, see the [Red Hat Ansible Automation Platform documentation](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/).
 
 Note that if you install the collection from Ansible Galaxy, it will not be upgraded automatically when you upgrade the Ansible package. To upgrade the collection to the latest available version, run the following command:
 
